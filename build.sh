@@ -4,8 +4,12 @@ set -o errexit
 
 # Update the package list and install required libraries
 echo "Installing required system libraries..."
-apt-get update 
-apt-get install -y libzbar0
+if [ ! -f /usr/lib/x86_64-linux-gnu/libzbar.so ]; then
+    echo "Installing libzbar0..."
+    curl -sSL https://packages.debian.org/bullseye/libzbar0 -o libzbar0.deb
+    dpkg -i libzbar0.deb
+    rm libzbar0.deb
+fi
 
 # Install Python dependencies
 echo "Installing Python dependencies..."
