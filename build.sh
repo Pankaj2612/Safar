@@ -4,8 +4,8 @@ set -o errexit
 
 # Update the package list and install required libraries
 echo "Installing required system libraries..."
-sudo apt-get update 
-sudo apt-get install libzbar0
+apt-get update 
+apt-get install -y libzbar0
 
 # Install Python dependencies
 echo "Installing Python dependencies..."
