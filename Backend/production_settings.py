@@ -16,7 +16,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['your-domain.com', 'www.your-domain.com', 'your-server-ip']
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["safar-vv8d.onrender.com","127.0.0.1","localhost"]
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/']
 
 # Application definition
