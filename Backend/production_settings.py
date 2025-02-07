@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from urllib.parse import urlparse
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,17 +70,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Backend.wsgi.application'
 
 # Database
-tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+# tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'neondb',
+#         'USER': tmpPostgres.username,
+#         'PASSWORD': tmpPostgres.password,
+#         'HOST': tmpPostgres.hostname,
+#         'PORT': 5432,
+#     }
+# }
+
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://neondb_owner:npg_y08CGAKXDIPi@ep-square-dream-a4mro7va-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require')
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.decode('utf-8').replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-    }
+    'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, conn_health_checks=True),
 }
 
 # Password validation
@@ -152,6 +159,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://:8000',
     'https://kit.fontawesome.com',
 )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
