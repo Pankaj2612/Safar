@@ -20,4 +20,4 @@
 ![Alt text](/media/verify.png "Verify")
 
 ## Other Contributors
-Anit Kumar Nag,Harsh Kumar,Aman Kumar Deo
+Vithika Pungliya, Atharva Purohit, Ankur Raut, Anit Kumar Nag, Harsh Kumar, Aman Kumar Deo
